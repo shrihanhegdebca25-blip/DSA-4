@@ -1,30 +1,40 @@
 #include<stdio.h>
 #include<stdlib.h>
-struct Node
-{
-    int date;
-    struct Node *next;
+
+struct node{
+    int data;
+    struct node* next;
 };
-int main()
-{
-    struct Node *head, *first, *second;
-    head = (struct Node*)malloc(sizeof(struct Node));
-     first = (struct Node*)malloc(sizeof(struct Node));
-      second = (struct Node*)malloc(sizeof(struct Node));
 
-      head->data=10;
-      head->next = first;
+int main(){
+    struct node* head = NULL;
+    struct node* second = NULL;
+    struct node* third = NULL;
+    struct node* fourth = NULL;
 
-      first->data=20;
-      first->next= second;
-      
-      second->data=30;
-      second->next=NULL;
+    head = (struct node*)malloc(sizeof(struct node));
+    second = (struct node*)malloc(sizeof(struct node));
+    third = (struct node*)malloc(sizeof(struct node));
 
-      struct Node *newNode = (struct Node*)malloc(sizeof(struct Node));
-      newNode->data=5;
-      newNode->next=head;   
-      head = newNode;
+    head->data = 1;
+    head->next = second;
+
+    second->data = 2;
+    second->next = third;
+
+    third->data = 3;
+    third->next = NULL;
+
+    fourth = (struct node*)malloc(sizeof(struct node));
+    fourth->data = 4;
+    fourth->next = head;
 
 
+    struct node* current = fourth;
+    while(current != NULL){
+        printf("%d ", current->data);
+        current = current->next;
+    }
+    
+    return 0;
 }
